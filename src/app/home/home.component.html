@@ -1,0 +1,65 @@
+<div class="row" id="content">
+    <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 main mx-auto">
+        <img src="/assets/logo_green.png" class="logo-connected pt-3 mx-auto d-block animated slow pulse" />
+
+        <div class="text-white text-center pt-4">
+            <h2>Bon jeu, {{ username }} !</h2>
+            <p class="pt-2">Vous êtes désormais connecté au réseau de l'InsaLan.</p>
+        </div>
+    
+        <div class="pt-3 col-sm-12 col-md-10 col-lg-8 col-xl-6 text-white mx-auto">
+            <p class="text-center">Vous pouvez connecter au maximum {{ numberDevices }} appareils sur le réseau.<br>Voici la liste de vos appareils connectés au réseau :</p>
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col" class="align-middle">#</th>
+                    <th scope="col" class="align-middle">Nom de l'appareil</th>
+                    <th scope="col" class="align-middle">Réseau</th>
+                    <th scope="col" class="align-middle" style="width: 110px;">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="device-table">
+    
+                </tbody>
+            </table>
+        </div>
+    
+
+    </div>
+
+    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-3 col-xl-3 pt-4 mb-sm-5 widget-bar-insalan" >
+
+        <hr class="d-md-none d-sm-block pb-3">
+        <h2 class="d-md-none d-sm-block text-white mb-4 text-center">En direct de la LAN : </h2>
+        <!--
+            {% for a in pinned_announces %}
+                {% if a.visible %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ a.title }}</h5>
+                            <div class="card-text">
+                                {{ a.body | markdown }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% for a in announces %}
+                {% if a.visible %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ a.title }}</h5>
+                            <small class="card-subtitle">il y a {{ a.last_update_date | timesince }}</small>
+                            <div class="card-text">
+                                {{ a.body | markdown }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+                -->
+    </div>
+
+</div>
