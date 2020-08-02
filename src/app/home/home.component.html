@@ -1,5 +1,5 @@
 <div class="row" id="content">
-    <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 main mx-auto">
+    <div class="col-12 main mx-auto">
         <img src="/assets/logo_green.png" class="logo-connected pt-3 mx-auto d-block animated slow pulse" />
 
         <div class="text-white text-center pt-4">
@@ -7,21 +7,48 @@
             <p class="pt-2">Vous êtes désormais connecté au réseau de l'InsaLan.</p>
         </div>
     
-        <div class="pt-3 col-sm-12 col-md-10 col-lg-8 col-xl-6 text-white mx-auto">
-            <p class="text-center">Vous pouvez connecter au maximum {{ numberDevices }} appareils sur le réseau.<br>Voici la liste de vos appareils connectés au réseau :</p>
-            <table class="table table-sm table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col" class="align-middle">#</th>
-                    <th scope="col" class="align-middle">Nom de l'appareil</th>
-                    <th scope="col" class="align-middle">Réseau</th>
-                    <th scope="col" class="align-middle" style="width: 110px;">Actions</th>
-                </tr>
-                </thead>
-                <tbody id="device-table">
-    
-                </tbody>
-            </table>
+        <div class="pt-3 col-sm-12 col-md-9 col-lg-7 col-xl-5 text-white mx-auto">
+            <p class="text-center pb-2">Vous pouvez connecter au maximum {{ numberDevices }} appareils sur le réseau.<br>Voici la liste de vos appareils connectés au réseau :</p>
+            <mat-table [dataSource]="devices" class="mat-elevation-z8 ml-5 mr-5">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="fake_id">
+                  <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.fake_id}} </mat-cell>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef> Nom de l'appareil </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="area">
+                  <mat-header-cell *matHeaderCellDef> Localisation </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+                    <mat-cell *matCellDef="let element" >
+                        <button mat-icon-button color="accent" (click)="openModifyDeviceNameModal(modifyDeviceNameModal, element.id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn" (click)="openDeleteDeviceModal(confirmDeleteDeviceModal, element.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+                            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
         </div>
     
 
@@ -63,3 +90,41 @@
     </div>
 
 </div>
+
+<ng-template #modifyDeviceNameModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modifier le nom d'un appareil</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="modifyDeviceNameForm">
+        <div class="form-group">
+          <label for="newDeviceName">Nouveau nom :</label>
+          <input id="newDeviceName" formControlName="newDeviceName" class="form-control" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-light" (click)="modal.dismiss()">Annuler</button>
+      <button type="button" class="btn btn-outline-primary" (click)="modifyDeviceName(modal)">Enregistrer</button>
+    </div>
+</ng-template>
+
+<ng-template #confirmDeleteDeviceModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Device deletion</h4>
+        <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p><strong>Are you sure you want to delete device ?</strong></p>
+        <p class="text-danger">This operation can not be undone.</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-light" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-outline-danger" (click)="deleteDevice(modal)">Ok</button>
+    </div>
+</ng-template>

@@ -1,0 +1,5 @@
+<div class="pt-5 mx-auto" style="width: 40%;" [hidden]="alertService.alerts.length === 0">
+  <p *ngFor="let alert of alertService.alerts">
+    <ngb-alert [type]="alert.type" (close)="close(alert)"><b>{{ alert.title }} :</b> {{ alert.message }}</ngb-alert>
+  </p>
+</div>

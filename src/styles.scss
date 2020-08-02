@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~primeng/resources/primeng.min.css";
+@import "~primeng/resources/themes/nova-dark/theme.css";
 
 // Color scheme definition
 
@@ -88,6 +90,17 @@ $badge-color: $color-tuna;
 @import "assets/bootstrap/scss/bootstrap";
 @import "assets/bootstrap/scss/bootstrap-reboot";
 @import "assets/bootstrap/scss/bootstrap-grid";
+
+
+.mat-header-cell {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mat-cell {
+    text-align: center;
+    justify-content:center;
+}
 
 // Bootstrap rules extensions
 
@@ -233,3 +246,6 @@ html, body {
 .faq-question .material-icons {
     vertical-align: middle;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

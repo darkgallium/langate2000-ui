@@ -1,0 +1,60 @@
+<div class="pt-5 text-white text-center">
+    <h2>Foire aux Questions</h2>
+    <p>Cette page regroupe les questions régulièrement posées au sujet du réseau de l'InsaLan.</p>
+</div>
+
+<div class="text-white col-xl-9 col-md-10 col-sm-12 col-xs-12 mx-auto">
+    <div class="faq-cat">
+        <p class="faq-cat-header">Compte Insalan</p>
+        <div class="faq-cat-content">
+            <ngb-accordion #acc="ngbAccordion" closeOthers="true">
+                <ngb-panel>
+                    <ng-template ngbPanelHeader>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="m-0" ngbPanelToggle>J'ai perdu mon mot de passe</h6>
+                            <button ngbPanelToggle class="btn p-0"><mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon></button>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <p>Vous pouvez soit utiliser un téléphone portable en 4G pour récupérer votre mot de passe en ligne sur <a href="https://www.insalan.fr">insalan.fr</a>, soit demander à un administrateur de vous recréer un compte local.</p>
+                    </ng-template>
+                </ngb-panel>
+                <ngb-panel>
+                    <ng-template ngbPanelHeader>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="m-0" ngbPanelToggle>Je n'arrive pas à me connecter</h6>
+                            <button ngbPanelToggle class="btn p-0"><mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon></button>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <p>N'hésitez pas à contacter un membre du staff qui vous aidera.</p>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+        </div>
+    </div>
+
+    <div class="faq-cat">
+        <p class="faq-cat-header">Réseau</p>
+        <div class="faq-cat-content">
+            <ngb-accordion #acc="ngbAccordion" closeOthers="true">
+                <ngb-panel>
+                    <ng-template ngbPanelHeader>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="m-0" ngbPanelToggle>Mon ordinateur ne se connecte pas au réseau ou indique que la connexion est limitée</h6>
+                            <button ngbPanelToggle class="btn p-0"><mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon></button>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <ul class="mt-1">
+                            <li>Revérifiez que votre câble réseau est bien branché.</li>
+                            <li>Vérifiez que le pilote de votre carte réseau est bien installé.</li>
+                            <li>Si votre problème n'est pas résolu, n'hésitez pas à contacter un membre du staff qui vous aidera.</li>
+                        </ul>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+        </div>
+    </div>
+
+</div>

@@ -11,17 +11,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Accueil</a>
+          <li class="nav-item" routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+            <a class="nav-link">Accueil</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="">FAQ</a>
+          <li class="nav-item" routerLink="/faq" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+            <a class="nav-link">FAQ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Gestion</a>
+            <a class="nav-link" [hidden]="!auth.isConnected() || !auth.isAdmin()">Gestion</a>
           </li>
-
+          <!--
           <li class="nav-itemactive">
             <a class="nav-link" href="">Gestion des tickets</a>
           </li>
@@ -29,13 +29,13 @@
           <li class="nav-itemactive">
             <a class="nav-link" href="">Demande d'assistance <span class="badge bg-light"></span></a>
           </li>
-
+        -->
         </ul>
 
         <ul class="nav navbar-nav ml-auto">
 
-          <li class="nav-item">
-            <a class="nav-link" href="">Déconnexion</a>
+          <li class="nav-item" [hidden]="!auth.isConnected()">
+            <a class="nav-link" (click)="disconnect()">Déconnexion</a>
           </li>
 
         </ul>

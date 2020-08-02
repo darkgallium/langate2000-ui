@@ -25,6 +25,19 @@ export class AuthService {
         }));
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.user = null;
+  }
+
+  public isConnected(): boolean {
+    return this.user != null;
+  }
+
+  public isAdmin(): boolean {
+    return this.user != null && (this.user.is_staff || this.user.is_superuser);
+  }
+
   public getCurrentUser(): Observable<User> {
     if (this.user) {
       return of(this.user);
